@@ -1,87 +1,56 @@
 <html>
 <head>
-    <title>Estudando PHP</title>
+    <meta charset="UTF-8">
+    <title>Buble Sort</title>
 </head>
 <body>
+  <h2>Digite Valores</h2>
+  <form id="form1" name="form1" method="post" action="index.php">
+  <label>
+      <input type="text" name="num1" id="num1">
+  </label>
+  <label>
+      <input type="text" name="num2" id="num2">
+  </label>
+  <label>
+      <input type="text" name="num3" id="num3">
+  </label>
+  <label>
+      <input type="text" name="num4" id="num4">
+  </label>
+  <label>
+      <input type="text" name="num5" id="num5">
+  </label>
+  <label>
+      <input type="submit" name="bt1" id="bt1">
+  </label>
+  </form>
+   <?php
+   $vet[0]=$_POST['num1'];
+   $vet[1]=$_POST['num2'];
+   $vet[2]=$_POST['num3'];
+   $vet[3]=$_POST['num4'];
+   $vet[4]=$_POST['num5'];
 
-<?php
+bubbleSort($vet);
 
+function bubbleSort($vetor) {
+    for($cont1=0;$cont1<5;$cont1++) {
+        for ($cont2=0;$cont2<4;$cont2++) {
+            if ($vetor[$cont2+1]<=$vetor[$cont2]) {
 
-$segundos = 134;
-echo "$segundos segundos equivale a " .
-    gmdate("H:i:s", $segundos);
-
-echo '<br>';
-$conexao = new mysqli("localhost", "root",
-    "", "estudos");
-
-// testa se a conexão foi efetuada com sucesso
-if(mysqli_connect_errno()){
-    die("Houve um erro de conexão: " . mysqli_connect_error());
+                $aux=$vetor[$cont2];
+                $vetor[$cont2]=$vetor[$cont2+1];
+                $vetor[$cont2+1]=$aux;
+            }
+        }
+        $lista[$cont1]=$aux;
+    }
+    echo '<h1>Lista Organizada em Ordem Crescente</h1>';
+    for($n=0;$n<5;$n++){
+        echo '<td><h3>Numero '.$n.'= '.$vetor[$n].'</h3></td>';
+    }
 }
-else{
-    print "Conexão com " . $conexao->host_info
-        . " efetuada com sucesso.";
-}
-
-// fecha a conexão com o banco de dados
-$conexao->close(); // fecha a conexão
-  // função que permite ordenar um vetor de inteiros
-  // usando a ordenação Insertion Sort
-  // Note a passagem do vetor como referência
-  function insertionSort(&$vetor){
-    // este laço varre os elementos a partir do segundo
-    // elemento, ou seja, o índice 1
-    for($i = 1; $i < count($vetor); $i++){
-      // guardamos o elemento atual em temp
-      $temp = $vetor[$i];
-
-      for($j = $i; (($j > 0) && ($vetor[$j - 1] > $temp)); $j--){
-$vetor[$j] = $vetor[$j - 1]; // houve uma troca
-}
-
-$vetor[$j] = $temp; // colocamos temp em seu devido lugar
-}
-}
-
-// vamos testar a ordenação agora
-$valores = array(4, 6, 2, 8, 1, 9, 3, 0, 11);
-
-// imprime a matriz sem a ordenação
-echo "Sem ordenação:<br>";
-for($i = 0; $i < count($valores); $i++){
-echo $valores[$i] . "  ";
-}
-
-// vamos ordenar a matriz
-insertionSort($valores);
-
-// imprime a matriz ordenada
-echo "<br><br>Ordenada usando Insertion Sort:<br>";
-for($i = 0; $i < count($valores); $i++){
-echo $valores[$i] . "  ";
-}
-
-/*
-  Este exemplo mostra como usar a função
-  array_shift() para extrair e retornar o primeiro
-  elemento de um array
-*/
-
-$pessoas[0] = "Carlos";
-$pessoas[1] = "Juliana";
-$pessoas[2] = "Igor";
-$pessoas[3] = "Marcelo";
-
-// extrai o primeiro elemento
-$primeiro = array_shift($pessoas);
-echo "O elemento extraido foi: " . $primeiro . "<br>";
-
-// vamos nos certificar de que o primeiro elemento
-// foi realmente removido
-echo "O array contém agora " . count($pessoas) . " elementos";
-
-?>
-
+   ?>
 </body>
 </html>
