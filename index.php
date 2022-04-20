@@ -4,8 +4,49 @@
     <title>Buble Sort</title>
 </head>
 <body>
-  <h2>Digite Valores</h2>
-  <form id="form1" name="form1" method="post" action="index.php">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Selecionando Elementos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        .negrito {
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+<h1>Selecionando Algoritmo De Ordenação</h1>
+
+<form>
+    <input type='text' name="num1" id="num1">
+    <input type='password' name="num2" id="num2">
+    <input type='checkbox' name='check1'>
+    <input type='radio' name='radio1'>
+    <?= 'Algoritmo Buble Sort' ?>
+</form>
+
+<script>
+
+</script>
+</body>
+ <!-- <form id="form1" name="form1" method="post" action="index.php">
+ // Pra Testar
   <label>
       <input type="text" name="num1" id="num1">
   </label>
@@ -24,7 +65,8 @@
   <label>
       <input type="submit" name="bt1" id="bt1">
   </label>
-  </form>
+      <a href="Selection_Sort.php">Selection</a>
+  </form>-!>
    <?php
    $vet[0]=$_POST['num1'];
    $vet[1]=$_POST['num2'];
@@ -46,6 +88,7 @@ function bubbleSort($vetor) {
         }
         $lista[$cont1]=$aux;
     }
+    echo set_time_limit($vetor);
     echo '<h1>Lista Organizada em Ordem Crescente</h1>';
     for($n=0;$n<5;$n++){
         echo '<td><h3>Numero '.$n.'= '.$vetor[$n].'</h3></td>';
